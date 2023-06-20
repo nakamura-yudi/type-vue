@@ -18,7 +18,7 @@
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
 import FormularioTraker from './components/FormularioTraker.vue';
-import TarefaTraker from './components/TerefaTraker.vue';
+import TarefaTraker from './components/TarefaTraker.vue';
 import ITarefa from './interfaces/ITarefa';
 
 export default defineComponent({
