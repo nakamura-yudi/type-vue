@@ -1,27 +1,50 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <manin class="columns is-gapless is-multiline">
+    <div class="column is-one-quarter" >
+      <BarraLateral/>
+    </div>
+    <div class="column is-three-quarter" >
+      <FormularioTraker @aoSalvarTarefa="salvarTarefa"/>
+      <div class="lista">
+        <TarefaTraker v-for=" (tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
+      
+
+      </div>
+    </div>
+  </manin>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import BarraLateral from './components/BarraLateral.vue';
+import FormularioTraker from './components/FormularioTraker.vue';
+import TarefaTraker from './components/TerefaTraker.vue';
+import ITarefa from './interfaces/ITarefa';
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: "App",
+    components: {
+      BarraLateral,
+      FormularioTraker,
+      TarefaTraker
+    },
+    data(){
+      return {
+        tarefas: [] as ITarefa[]
+      }
+    },
+    methods:{
+      salvarTarefa(tarefa : ITarefa){
+        this.tarefas.push(tarefa)
+      }
+    }
+
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style> 
+.lista{
+    padding:1.25rem;
 }
+
 </style>
