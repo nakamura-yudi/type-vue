@@ -1,5 +1,5 @@
 <template>
-   <Box>
+   <BoxTraker>
         <div class="columns">
             <div class="column">
                 <div class="column is-7">{{ tarefa.descricao || 'Tarefa sem descrição' }}</div>
@@ -8,30 +8,34 @@
                 </div>
             </div>
         </div>
-    </Box>
+    </BoxTraker>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import CronometroTraker from './CronometroTraker.vue';
 import ITarefa from '@/interfaces/ITarefa';
-import Box from './Box.vue';
+import BoxTraker from './BoxTraker.vue';
 
 export default defineComponent({
     name: 'TarefaTraker',
     components: {
         CronometroTraker,
-        Box
+        BoxTraker
     },
     props:{
         tarefa:{
             type: Object as PropType<ITarefa>,
             required: true
         }
+    },
+    computed: {
+    tempoGasto () : string {
+      return new Date(this.tarefa.duracaoEmSegundos * 1000)
+        .toISOString()
+        .substr(11, 8)
     }
+  }
 })
 
 </script>
-<style scoped> 
-.box {background: #FAF0CA;} 
-</style>

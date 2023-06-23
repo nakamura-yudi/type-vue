@@ -11,15 +11,13 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name:'Box',
-    data(){
-        return{
-            estilos: {
-                background: '#FAF0CA'
-            }
-        }
-    }
+    name:'BoxTraker'
 
 })
 
 </script>
+<style scoped>
+.box {
+  background: #FAF0CA;
+}
+</style>
