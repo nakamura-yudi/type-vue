@@ -1,12 +1,15 @@
 <template>
    <BoxTraker>
-        <div class="columns">
-            <div class="column">
-                <div class="column is-7">{{ tarefa.descricao || 'Tarefa sem descrição' }}</div>
+        <div class="columns clicavel">
+            <div class="column is-4">
+                {{ tarefa.descricao || 'Tarefa sem descrição' }}
+            </div>
+            <div class="column is-3">
+                {{ tarefa.projeto?.nome || 'N/D' }}
+            </div>
                 <div class="column">
                     <CronometroTraker :tempoEmSegundos="tarefa.duracaoEmSegundos"/>
                 </div>
-            </div>
         </div>
     </BoxTraker>
 </template>
@@ -39,3 +42,8 @@ export default defineComponent({
 })
 
 </script>
+<style scoped>
+.clicavel{
+    cursor: pointer;
+}
+</style>
